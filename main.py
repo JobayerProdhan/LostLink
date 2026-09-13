@@ -1,5 +1,5 @@
 from enum import Enum 
-from fastapi import FastAPI 
+from fastapi import FastAPI ,HTTPException  
 from pydantic import BaseModel 
 
 app = FastAPI() 
@@ -44,5 +44,10 @@ async def get_items(
     if status:
         results = [item for item in results if item.status == status] 
     
-    return results
+    return results 
 
+# path parameter --> get specific  item 
+@app.get("/itms/{items_id}")
+async def get_items(items_id:int):
+    if items_id >= len(items_db):
+        raise HTTPException (status_code=404,detail="Items not found") 
