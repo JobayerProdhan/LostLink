@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Items — LostLink</title>
+    <link rel="stylesheet" href="/static/search.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="/" class="logo"><span>Lost</span>Link</a>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/search" class="active">Search Items</a>
+        <a href="/create" class="nav-btn">Report Item</a>
+    </div>
+</nav>
+
+
+<main class="page">
+
+    <section class="header">
+        <span>LOST & FOUND</span>
+        <h1>Find an item</h1>
+        <p>Search reported items by category, location, or status.</p>
+    </section>
+
+
+    <section class="search-box">
+
+        <form action="/search" method="get">
+
+            <div class="field">
+                <label for="category">Category</label>
+
+                <input
+                    type="text"
+                    id="category"
+                    name="category"
+                    value="{{ request.query_params.get('category', '') }}"
+                    placeholder="e.g. Electronics"
+                >
+            </div>
+
+
+            <div class="field">
+                <label for="location">Location</label>
+
+                <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    value="{{ request.query_params.get('location', '') }}"
+                    placeholder="e.g. Dhanmondi"
+                >
+            </div>
+
+
+            <div class="field">
+                <label for="status">Status</label>
+
+                <select id="status" name="status">
+
+                    <option value="">All items</option>
+
+                    <option value="lost"
+                        {% if request.query_params.get('status') == 'lost' %}
+                        selected
+                        {% endif %}>
+                        Lost
+                    </option>
+
+                    <option value="found"
+                        {% if request.query_params.get('status') == 'found' %}
+                        selected
+                        {% endif %}>
+                        Found
+                    </option>
+
+                </select>
+            </div>
+
+
+            <button type="submit">
+                Search →
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section class="results">
+
+        <div class="results-header">
+            <h2>Reported Items</h2>
+            <span>{{ items|length }} result(s)</span>
+        </div>
+
+
+        <div class="item-grid">
+
+            {% for item in items %}
+
+            <article class="item-card">
+
+                <div class="card-top">
+
+                    <span class="category">
+                        {{ item.category }}
+                    </span>
+
+                    <span class="status {{ item.status }}">
+                        {{ item.status }}
+                    </span>
+
+                </div>
+
+
+                <h3>{{ item.name }}</h3>
+
+                <p class="description">
+                    {{ item.description }}
+                </p>
+
+
+                <div class="item-info">
+
+                    <div>
+                        <small>LOCATION</small>
+                        <p>📍 {{ item.location }}</p>
+                    </div>
+
+                    <div>
+                        <small>DATE</small>
+                        <p>📅 {{ item.date }}</p>
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% else %}
+
+            <div class="empty">
+                <div class="empty-icon">🔎</div>
+
+                <h3>No items found</h3>
+
+                <p>
+                    Try changing your search filters.
+                </p>
+
+                <a href="/search">Clear filters</a>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <div class="logo"><span>Lost</span>Link</div>
+
+    <p>
+        Helping lost items find their way home.
+    </p>
+</footer>
+
+</body>
+</html>

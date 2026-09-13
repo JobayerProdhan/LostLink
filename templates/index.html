@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LostLink — Lost & Found</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>Lost</span>Link
+        </div>
+
+        <div class="nav-links">
+
+    <a href="/">Home</a>
+    <a href="/search">Search Items</a>
+
+    {% if username %}
+
+        <span class="welcome">
+            Hi, {{ username }}
+        </span>
+
+        <a href="/logout" class="nav-btn">
+            Log Out
+        </a>
+
+    {% else %}
+
+        <a href="/login">
+            Log In
+        </a>
+
+        <a href="/register" class="nav-btn">
+            Sign Up
+        </a>
+
+    {% endif %}
+
+</div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <main class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🔎 Lost something? Found something?
+            </div>
+
+            <h1>
+                Find what you lost.<br>
+                <span>Return what you found.</span>
+            </h1>
+
+            <p>
+                LostLink makes it simple to report, discover, and reconnect
+                lost and found items with their rightful owners.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/search" class="primary-btn">
+                    Find an Item →
+                </a>
+
+                <a href="/create" class="secondary-btn">
+                    Report an Item
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- Hero Card -->
+        <div class="hero-card">
+
+            <div class="card-icon">🔍</div>
+
+            <h3>Looking for something?</h3>
+
+            <p>
+                Search lost and found items by category,
+                location, and status.
+            </p>
+
+            <a href="/search">Start Searching →</a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Features -->
+    <section class="features">
+
+        <div class="section-heading">
+            <p>HOW LOSTLINK WORKS</p>
+            <h2>Simple. Fast. Connected.</h2>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                <div class="feature-number">01</div>
+                <h3>Report</h3>
+                <p>
+                    Tell the community about an item you've
+                    lost or found.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-number">02</div>
+                <h3>Search</h3>
+                <p>
+                    Search through reported items using
+                    useful filters.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-number">03</div>
+                <h3>Reconnect</h3>
+                <p>
+                    Help lost belongings find their way
+                    back to their owners.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo">
+            <span>Lost</span>Link
+        </div>
+
+        <p>
+            A simple platform for lost & found items.
+        </p>
+    </footer>
+
+</body>
+</html>

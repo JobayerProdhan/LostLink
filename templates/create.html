@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Item — LostLink</title>
+
+    <link rel="stylesheet" href="/static/create.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <span>Lost</span>Link
+        </a>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/search">Search Items</a>
+        </div>
+    </nav>
+
+
+    <main class="page">
+
+        <div class="page-header">
+            <span class="eyebrow">LOST & FOUND</span>
+
+            <h1>Report an item</h1>
+
+            <p>
+                Help someone reconnect with something they've lost.
+                Provide accurate information so others can find it.
+            </p>
+        </div>
+
+
+        <div class="form-card">
+
+            <form action="/items/" method="post">
+
+                <div class="form-section">
+                    <h2>Item information</h2>
+                    <p>Tell us about the lost or found item.</p>
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label for="name">Item name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="e.g. Black leather wallet"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>
+                                Select category
+                            </option>
+
+                            <option value="Electronics">
+                                Electronics
+                            </option>
+
+                            <option value="Documents">
+                                Documents
+                            </option>
+
+                            <option value="Wallet">
+                                Wallet
+                            </option>
+
+                            <option value="Bag">
+                                Bag
+                            </option>
+
+                            <option value="Keys">
+                                Keys
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+
+                        <select id="status" name="status" required>
+                            <option value="" disabled selected>
+                                Select status
+                            </option>
+
+                            <option value="lost">
+                                I lost this item
+                            </option>
+
+                            <option value="found">
+                                I found this item
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="e.g. Dhanmondi, Dhaka"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group full">
+                        <label for="description">Description</label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="6"
+                            placeholder="Describe the item, where it was lost/found, and any identifying details..."
+                            required
+                        ></textarea>
+                    </div>
+
+                </div>
+
+
+                <div class="form-footer">
+
+                    <p>
+                        Please make sure the information is accurate.
+                    </p>
+
+                    <button type="submit">
+                        Submit Report
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        <div class="logo">
+            <span>Lost</span>Link
+        </div>
+
+        <p>
+            Helping lost items find their way home.
+        </p>
+    </footer>
+
+</body>
+</html>

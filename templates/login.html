@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login — LostLink</title>
+    <link rel="stylesheet" href="/static/auth.css">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <a href="/" class="logo">
+            <span>Lost</span>Link
+        </a>
+
+        <h1>Welcome back</h1>
+
+        <p class="subtitle">
+            Log in to continue to LostLink.
+        </p>
+
+        {% if error %}
+            <div class="error">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form action="/login" method="post">
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button type="submit">
+                Log In
+            </button>
+
+        </form>
+
+        <p class="switch">
+            Don't have an account?
+            <a href="/register">Create account</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
