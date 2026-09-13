@@ -12,9 +12,16 @@ app = FastAPI()
 templates = Jinja2Templates(directory='templates')
 app.mount("/static",StaticFiles(directory="static"),name="static")
 
+import os
+
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "development-secret-key"
+)
+
 app.add_middleware(
     SessionMiddleware,
-    secret_key='change-this-secret-key'
+    secret_key=SECRET_KEY
 )
 
 password_hash = PasswordHash.recommended() 
