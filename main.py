@@ -51,3 +51,14 @@ async def get_items(
 async def get_items(items_id:int):
     if items_id >= len(items_db):
         raise HTTPException (status_code=404,detail="Items not found") 
+
+
+
+# put --> Replace the entire item  
+@app.put("/items/{items_id}") 
+async def update(item_id:int , item:Item):
+    if item_id>=len(items_db):
+        raise HTTPException(status_code=404,detail='Items not  found') 
+    
+    items_db[item_id] = item
+    return items_db[item_id] 
