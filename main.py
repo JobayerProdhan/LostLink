@@ -62,3 +62,13 @@ async def update(item_id:int , item:Item):
     
     items_db[item_id] = item
     return items_db[item_id] 
+
+
+# DELETE --> Delete an item 
+@app.delete("/items/{items_id}")
+async def delete_item(item_id:int):
+    if item_id >= len(items_db):
+        raise HTTPException(status_code=404, detail="Item not found")
+    delete_item = items_db.pop(item_id) 
+    return {"message":"item deleted",
+            "item": delete_item}
